@@ -1,0 +1,10 @@
+Hardware: ATMEGA32, 
+          power supply (5v), 
+          AVR-ISP PROGRAMMER,
+          JHD_162ALCD (16*2LCD), 
+          100uF capacitor, 
+          100nF capacitor, 
+          10KΩ resistor (8 pieces)
+          
+Software: Atmel studio 6.1 or Atmel studio 6.2,
+          progisp or flash magic.
