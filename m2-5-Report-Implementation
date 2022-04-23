@@ -1,0 +1,43 @@
+Report:
+In circuit PORTB of ATMEGA32 is connected to data port LCD. Here one should remember to disable the JTAG communication in PORTC ot ATMEGA by changing the fuse bytes, if one wants to use the PORTC as a normal communication port. In 16x2 LCD there are 16 pins over all if there is a back light, if there is no back light there will be 14 pins. One can power or leave the back light pins. Now in the 14 pins there are 8 data pins (7-14 or D0-D7), 2 power supply pins (1&2 or VSS&VDD or gnd&+5v), 3rd pin for contrast control (VEE-controls how thick the characters should be shown), and 3 control pins (RS&RW&E).
+
+In the circuit, you can observe that I have only took two control pins , this give the flexibility, the contrast bit and READ/WRITE are not often used so they can be shorted to ground. This puts LCD in highest contrast and read mode. We just need to control ENABLE and RS pins to send characters and data accordingly.
+
+The connections which are done for LCD are given below:
+
+PIN1 or VSS to ground
+
+PIN2 or VDD or VCC to +5v power
+
+PIN3 or VEE to ground (gives maximum contrast best for a beginner)
+
+PIN4 or RS (Register Selection) to PD6 of uC
+
+PIN5 or RW (Read/Write) to ground (puts LCD in read mode eases the communication for user)
+
+PIN6 or E (Enable) to PD5 of uC
+
+PIN7 or D0 to PB0 of uC
+
+PIN8 or D1 to PB1 of uC
+
+PIN9 or D2 to PB2 of uC
+
+PIN10 or D3 to PB3 of uC
+
+PIN11 or D4 to PB4 of uC
+
+PIN12 or D5 to PB5 of uC
+
+PIN13 or D6 to PB6 of uC
+
+PIN14 or D7to PB7 of uC
+
+In the circuit you can see that we have used 8bit communication (D0-D7) however this is not a compulsory, we can use 4bit communication (D4-D7) but with 4 bit communication program becomes a bit complex. So from mere observation of above table we are connecting 10 pins of LCD to controller in which 8 pins are data pins and 2 pins for control.
+
+Now let’s talk about keypad, keypad is nothing but multiplexed keys. Buttons are connected in a multiplexed form for reducing the pin usage of control system.
+
+Consider we have a 4x4 keypad, in this keypad we have 16 buttons, in normal cases we need 16 controller pins to interface 16 buttons, but this is not good in control system point of view. This pin usage can be reduced by connecting the buttons in multiplex form.
+
+For example consider we have 16 buttons and we want to attach it to a controller to form a keypad, these keys are arranged as shown in figure:
+
